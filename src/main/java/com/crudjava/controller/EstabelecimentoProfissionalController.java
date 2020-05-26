@@ -15,7 +15,7 @@ import com.crudjava.util.ResponseAPI;
 import com.crudjava.util.ResponseAPIUtil;
 
 @RestController
-@RequestMapping(value = "/estabelecimento/{estabelecimentoId}/profissional")
+@RequestMapping(value = "/estabecimento/{estabelecimentoId}/profissional")
 public class EstabelecimentoProfissionalController {
 
 	@Autowired
@@ -32,7 +32,7 @@ public class EstabelecimentoProfissionalController {
 			throws BusinessException {
 		try {
 			return new ResponseEntity<ResponseAPI>(responseAPIUtil.getDefaultUpdateResponse(
-							estabelecimentoService.vincularEstabelecimento(estabelecimentoId, profissionalId)),
+							profissionalService.vincularEstabelecimento(estabelecimentoId, profissionalId)),
 					HttpStatus.OK);
 		} catch (Exception e) {
 			return responseAPIUtil.getDefaultResponseEntityExceptionError(e);

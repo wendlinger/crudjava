@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -27,9 +28,8 @@ public class Profissional implements Serializable {
 	@Column(name = "endereco")
 	private String endereco;
 
-//	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "estabelecimento_id")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "estabelecimento_id")
 	private Estabelecimento estabelecimento;
 
 	public Profissional() {

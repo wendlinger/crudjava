@@ -1,20 +1,13 @@
 package com.crudjava.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "estabelecimento")
@@ -31,22 +24,16 @@ public class Estabelecimento implements Serializable {
 
 	@Column(name = "endereco")
 	private String endereco;
-
-	@JsonIgnore
-	@OneToMany
-	@JoinColumn(name = "estabelecimento_id")
-	private List<Profissional> profissionais = new ArrayList<>();
-
+	
 	public Estabelecimento() {
 		super();
 	}
 
-	public Estabelecimento(Long id, String nome, String endereco, List<Profissional> profissionais) {
+	public Estabelecimento(Long id, String nome, String endereco) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
-		this.profissionais = profissionais;
 	}
 
 	public Long getId() {
@@ -71,14 +58,6 @@ public class Estabelecimento implements Serializable {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
-	}
-
-	public List<Profissional> getProfissionais() {
-		return profissionais;
-	}
-
-	public void setProfissionais(List<Profissional> profissionais) {
-		this.profissionais = profissionais;
 	}
 
 	@Override
