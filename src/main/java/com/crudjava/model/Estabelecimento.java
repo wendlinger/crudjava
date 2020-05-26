@@ -33,7 +33,7 @@ public class Estabelecimento implements Serializable {
 	private String endereco;
 
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany
 	@JoinColumn(name = "estabelecimento_id")
 	private List<Profissional> profissionais = new ArrayList<>();
 
