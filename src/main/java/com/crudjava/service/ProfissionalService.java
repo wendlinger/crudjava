@@ -6,7 +6,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import com.crudjava.exception.BusinessException;
 import com.crudjava.model.Estabelecimento;
@@ -19,7 +18,7 @@ public class ProfissionalService {
 
 	@Autowired
 	private ProfissionalRespository repository;
-	
+
 	@Autowired
 	private EstabelecimentoService estabelecimentoService;
 
@@ -49,10 +48,8 @@ public class ProfissionalService {
 	public void delete(Profissional profissional) throws BusinessException {
 		repository.delete(profissional);
 	}
-	
-	public Profissional vincularEstabelecimento(Long estabelecimentoId, Long profissionalId) throws BusinessException {
 
-//		StringBuilder errors = new StringBuilder();
+	public Profissional vincularEstabelecimento(Long estabelecimentoId, Long profissionalId) throws BusinessException {
 
 		Profissional profissionalDB = findById(profissionalId);
 		Estabelecimento estabelecimentoDB = estabelecimentoService.findById(estabelecimentoId);
@@ -67,12 +64,7 @@ public class ProfissionalService {
 			}
 		} else {
 			throw new BusinessException("Estabelecimento ou Profissional não encontrados.");
-//			errors.append(System.getProperty("line.separator"));
 		}
 
-//		if (!StringUtils.isEmpty(errors.toString())) {
-//			throw new BusinessException(errors.toString());
-//		}
-		
 	}
 }
